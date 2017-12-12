@@ -291,6 +291,14 @@
       <Project>{ecf925ed-48f1-4525-9b72-6901caabcfe5}</Project>
       <Name>OneOff.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OneOff.Models\OneOff.Models.csproj">
+      <Project>{97c8cb45-c660-4e62-b0f6-6a0ed31aaab2}</Project>
+      <Name>OneOff.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OneOff.Services\OneOff.Services.csproj">
+      <Project>{019D6FBA-D4B9-41EC-9BD6-C1A4AF6FA747}</Project>
+      <Name>OneOff.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
