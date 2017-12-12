@@ -22,3 +22,7 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#register-buttons {
+    margin-left: 14em;
+}

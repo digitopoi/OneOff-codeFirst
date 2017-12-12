@@ -151,7 +151,7 @@ namespace OneOff.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, IsArtist = model.IsArtist };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -162,8 +162,14 @@ namespace OneOff.Web.MVC.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    if (model.IsArtist)
+                    {
+                        return RedirectToAction("Index", "Artist");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Venue");
+                    }
                 }
                 AddErrors(result);
             }

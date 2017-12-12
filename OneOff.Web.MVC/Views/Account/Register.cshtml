@@ -29,6 +29,16 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
+    <div class="form-group" id="register-buttons">
+        <div class="radio-inline">
+            Artist
+            @Html.RadioButtonFor(m => m.IsArtist, true)
+        </div>
+        <div class="radio-inline">
+            Venue
+            @Html.RadioButtonFor(m => m.IsArtist, false)
+        </div>
+    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Register" />

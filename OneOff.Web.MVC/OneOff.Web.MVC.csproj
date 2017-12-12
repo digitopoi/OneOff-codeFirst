@@ -190,8 +190,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\VenueController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -257,6 +259,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Artist\Create.cshtml" />
+    <Content Include="Views\Artist\Delete.cshtml" />
+    <Content Include="Views\Artist\Details.cshtml" />
+    <Content Include="Views\Artist\Edit.cshtml" />
+    <Content Include="Views\Artist\Index.cshtml" />
+    <Content Include="Views\Venue\Create.cshtml" />
+    <Content Include="Views\Venue\Delete.cshtml" />
+    <Content Include="Views\Venue\Details.cshtml" />
+    <Content Include="Views\Venue\Edit.cshtml" />
+    <Content Include="Views\Venue\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
