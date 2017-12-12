@@ -20,7 +20,7 @@ namespace OneOff.Services
             _userId = userId;
         }
 
-        public async Task<bool> CreateGig(GigViewModel model, bool isArtist)
+        public async Task<bool> CreateGigAsync(GigViewModel model, bool isArtist)
         {
             var entity =
                 new GigEntity()
@@ -47,7 +47,7 @@ namespace OneOff.Services
              
         }
 
-        public async Task<bool> DeleteGig(int gigId)
+        public async Task<bool> DeleteGigAsync(int gigId)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -61,12 +61,12 @@ namespace OneOff.Services
         }
 
         //  TODO: not needed until mapping
-        public Task<IEnumerable<GigViewModel>> GetAllGigs()
+        public Task<IEnumerable<GigViewModel>> GetAllGigsAsync()
         {
             throw new NotImplementedException();
         }
 
-        public async Task<GigViewModel> GetGigById(int gigId)
+        public async Task<GigViewModel> GetGigByIdAsync(int gigId)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -100,7 +100,7 @@ namespace OneOff.Services
             }
         }
 
-        public async Task<bool> UpdateGig(int id, GigViewModel model)
+        public async Task<bool> UpdateGigAsync(int id, GigViewModel model)
         {
             using (var context = new ApplicationDbContext())
             {

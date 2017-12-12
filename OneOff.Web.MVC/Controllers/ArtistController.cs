@@ -14,8 +14,6 @@ namespace OneOff.Web.MVC.Controllers
 {
     public class ArtistController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
         // GET: Artist
         public async Task<ActionResult> Index()
         {
