@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneOff.Models", "OneOff.Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneOff.Services", "OneOff.Services\OneOff.Services.csproj", "{019D6FBA-D4B9-41EC-9BD6-C1A4AF6FA747}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneOff.Contracts", "OneOff.Contracts\OneOff.Contracts.csproj", "{DFBB6EB0-ECEE-46F5-A8F9-65E89DB5991A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{019D6FBA-D4B9-41EC-9BD6-C1A4AF6FA747}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{019D6FBA-D4B9-41EC-9BD6-C1A4AF6FA747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{019D6FBA-D4B9-41EC-9BD6-C1A4AF6FA747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFBB6EB0-ECEE-46F5-A8F9-65E89DB5991A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFBB6EB0-ECEE-46F5-A8F9-65E89DB5991A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFBB6EB0-ECEE-46F5-A8F9-65E89DB5991A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFBB6EB0-ECEE-46F5-A8F9-65E89DB5991A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

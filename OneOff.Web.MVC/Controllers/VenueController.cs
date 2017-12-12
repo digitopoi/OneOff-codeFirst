@@ -29,7 +29,7 @@ namespace OneOff.Web.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Gig gig = await db.Gigs.FindAsync(id);
+            GigEntity gig = await db.Gigs.FindAsync(id);
             if (gig == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace OneOff.Web.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "GigId,OwnerId,Date,PostalCode")] Gig gig)
+        public async Task<ActionResult> Create([Bind(Include = "GigId,OwnerId,Date,PostalCode")] GigEntity gig)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace OneOff.Web.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Gig gig = await db.Gigs.FindAsync(id);
+            GigEntity gig = await db.Gigs.FindAsync(id);
             if (gig == null)
             {
                 return HttpNotFound();
@@ -80,7 +80,7 @@ namespace OneOff.Web.MVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "GigId,OwnerId,Date,PostalCode")] Gig gig)
+        public async Task<ActionResult> Edit([Bind(Include = "GigId,OwnerId,Date,PostalCode")] GigEntity gig)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace OneOff.Web.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Gig gig = await db.Gigs.FindAsync(id);
+            GigEntity gig = await db.Gigs.FindAsync(id);
             if (gig == null)
             {
                 return HttpNotFound();
@@ -111,7 +111,7 @@ namespace OneOff.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Gig gig = await db.Gigs.FindAsync(id);
+            GigEntity gig = await db.Gigs.FindAsync(id);
             db.Gigs.Remove(gig);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
