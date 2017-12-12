@@ -3,7 +3,7 @@ namespace OneOff.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class AddGigs : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -13,6 +13,7 @@ namespace OneOff.Data.Migrations
                     {
                         GigId = c.Int(nullable: false, identity: true),
                         OwnerId = c.Guid(nullable: false),
+                        IsRequest = c.Boolean(nullable: false),
                         Date = c.DateTime(nullable: false),
                         PostalCode = c.String(nullable: false),
                     })
@@ -47,6 +48,7 @@ namespace OneOff.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        IsArtist = c.Boolean(nullable: false),
                         Email = c.String(),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),

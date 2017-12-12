@@ -30,7 +30,7 @@ namespace OneOff.Web.MVC.Models
         {
         }
 
-        public DbSet<GigEntity> Gigs { get; set; }
+        public DbSet<Gig> Gigs { get; set; }
 
         public static ApplicationDbContext Create()
         {

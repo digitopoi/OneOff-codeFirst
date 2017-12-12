@@ -53,19 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\GigEntity.cs" />
+    <Compile Include="Entities\Gig.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\201712121620452_AddGigs.cs" />
-    <Compile Include="Migrations\201712121620452_AddGigs.Designer.cs">
-      <DependentUpon>201712121620452_AddGigs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121638487_AddIsArtist.cs" />
-    <Compile Include="Migrations\201712121638487_AddIsArtist.Designer.cs">
-      <DependentUpon>201712121638487_AddIsArtist.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712121919321_AddIsRequest.cs" />
-    <Compile Include="Migrations\201712121919321_AddIsRequest.Designer.cs">
-      <DependentUpon>201712121919321_AddIsRequest.cs</DependentUpon>
+    <Compile Include="Migrations\201712122114204_InitialMigration.cs" />
+    <Compile Include="Migrations\201712122114204_InitialMigration.Designer.cs">
+      <DependentUpon>201712122114204_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,14 +67,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712121620452_AddGigs.resx">
-      <DependentUpon>201712121620452_AddGigs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121638487_AddIsArtist.resx">
-      <DependentUpon>201712121638487_AddIsArtist.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712121919321_AddIsRequest.resx">
-      <DependentUpon>201712121919321_AddIsRequest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712122114204_InitialMigration.resx">
+      <DependentUpon>201712122114204_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

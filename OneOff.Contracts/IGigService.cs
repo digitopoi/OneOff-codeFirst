@@ -1,4 +1,5 @@
 ﻿using OneOff.Models;
+using OneOff.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace OneOff.Contracts
     public interface IGigService
     {
         Task<bool> CreateGigAsync(GigViewModel model, bool isArtist);
-        IEnumerable<GigViewModel> GetGigsByUser();
-        Task<GigViewModel> GetGigByIdAsync(int gigId);
-        Task<bool> UpdateGigAsync(int id, GigViewModel model);
+        IEnumerable<GigEditViewModel> GetGigsByUser();
+        Task<GigEditViewModel> GetGigByIdAsync(int gigId);
+        Task<bool> UpdateGigAsync(int id, GigEditViewModel model);
         Task<bool> DeleteGigAsync(int gigId);
         Task<IEnumerable<GigViewModel>> GetAllGigsAsync();
     }

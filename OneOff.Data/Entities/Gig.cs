@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OneOff.Data.Entities
 {
-    public class GigEntity
+    public class Gig
     {
         [Key]
         public int GigId { get; set; }

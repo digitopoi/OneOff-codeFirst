@@ -12,6 +12,7 @@ using OneOff.Web.MVC.Models;
 using OneOff.Services;
 using Microsoft.AspNet.Identity;
 using OneOff.Models;
+using OneOff.Models.ViewModels;
 
 namespace OneOff.Web.MVC.Controllers
 {
@@ -75,7 +76,7 @@ namespace OneOff.Web.MVC.Controllers
         // POST: Artist/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, GigViewModel model)
+        public async Task<ActionResult> Edit(int id, GigEditViewModel model)
         {
             if (!ModelState.IsValid) return View(model);
 

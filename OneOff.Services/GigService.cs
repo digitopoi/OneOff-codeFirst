@@ -1,6 +1,7 @@
 ﻿using OneOff.Contracts;
 using OneOff.Data.Entities;
 using OneOff.Models;
+using OneOff.Models.ViewModels;
 using OneOff.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace OneOff.Services
         public async Task<bool> CreateGigAsync(GigViewModel model, bool isArtist)
         {
             var entity =
-                new GigEntity()
+                new Gig()
                 {
                     OwnerId = _userId,
                     Date = model.Date,
@@ -66,7 +67,7 @@ namespace OneOff.Services
             throw new NotImplementedException();
         }
 
-        public async Task<GigViewModel> GetGigByIdAsync(int gigId)
+        public async Task<GigEditViewModel> GetGigByIdAsync(int gigId)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -74,7 +75,7 @@ namespace OneOff.Services
                                     .Gigs
                                     .Where(e => e.GigId == gigId && e.OwnerId == _userId)
                                     .FirstOrDefaultAsync();
-                return new GigViewModel
+                return new GigEditViewModel
                 {
                     Date = entity.Date,
                     PostalCode = entity.PostalCode,
@@ -82,7 +83,7 @@ namespace OneOff.Services
             }
         }
 
-        public IEnumerable<GigViewModel> GetGigsByUser()
+        public IEnumerable<GigEditViewModel> GetGigsByUser()
         {
             using (var context = new ApplicationDbContext())
             {
@@ -90,8 +91,9 @@ namespace OneOff.Services
                                 .Gigs
                                 .Where(e => e.OwnerId == _userId)
                                 .Select(
-                                    e => new GigViewModel
+                                    e => new GigEditViewModel
                                     {
+                                        GigId = e.GigId,
                                         Date = e.Date,
                                         PostalCode = e.PostalCode,
                                     }
@@ -100,7 +102,7 @@ namespace OneOff.Services
             }
         }
 
-        public async Task<bool> UpdateGigAsync(int id, GigViewModel model)
+        public async Task<bool> UpdateGigAsync(int id, GigEditViewModel model)
         {
             using (var context = new ApplicationDbContext())
             {

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace OneOff.Models.ViewModels
 {
-    public class GigViewModel
+    public class GigEditViewModel
     {
+        public int GigId { get; set; }
         public DateTime Date { get; set; }
         public string PostalCode { get; set; }
     }
