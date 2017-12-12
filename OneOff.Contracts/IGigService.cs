@@ -10,7 +10,7 @@ namespace OneOff.Contracts
     public interface IGigService
     {
         Task<bool> CreateGig(GigViewModel model, bool isArtist);
-        Task<IEnumerable<GigViewModel>> GetGigsByUser();
+        IEnumerable<GigViewModel> GetGigsByUser();
         Task<GigViewModel> GetGigById(int gigId);
         Task<bool> UpdateGig(GigViewModel model);
         Task<bool> DeleteGig(int gigId);
