@@ -56,11 +56,11 @@ namespace OneOff.Web.MVC.Controllers
             
             if(await service.CreateGigAsync(model, true))
             {
-                TempData["SaveResult"] = "Your note was created.";
+                TempData["SaveResult"] = "Your gig was created.";
                 return RedirectToAction("Index");
             }
 
-            ModelState.AddModelError("", "Note could not be created.");
+            ModelState.AddModelError("", "Gig could not be created.");
             return View(model);
         }
 
