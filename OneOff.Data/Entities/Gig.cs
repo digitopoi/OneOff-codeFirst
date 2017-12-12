@@ -16,6 +16,9 @@ namespace OneOff.Data.Entities
         public Guid OwnerId { get; set; }
 
         [Required]
+        public bool IsRequest { get; set; }
+
+        [Required]
         public DateTime Date { get; set; }
 
         [Required]
