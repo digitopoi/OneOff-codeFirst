@@ -13,7 +13,7 @@ namespace OneOff.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712122114204_InitialMigration"; }
+            get { return "201712130518406_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

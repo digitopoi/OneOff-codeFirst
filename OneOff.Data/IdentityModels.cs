@@ -42,10 +42,13 @@ namespace OneOff.Web.MVC.Models
             modelBuilder
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<IdentityUserRole>().HasKey(m => new { m.UserId, m.RoleId });
+
             modelBuilder
                 .Configurations
-                .Add(new IdentityUserLoginConfiguration())
-                .Add(new IdentityUserRoleConfiguration());
+                .Add(new IdentityUserLoginConfiguration());
+            //    .Add(new IdentityUserRoleConfiguration());
 
         }
 
@@ -57,12 +60,12 @@ namespace OneOff.Web.MVC.Models
             }
         }
 
-        public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
-        {
-            public IdentityUserRoleConfiguration()
-            {
-                HasKey(iul => iul.RoleId);
-            }
-        }
+        //public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+        //{
+        //    public IdentityUserRoleConfiguration()
+        //    {
+        //        HasKey(iul => iul.RoleId);
+        //    }
+        //}
     }
 }

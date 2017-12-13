@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OneOff.Web.MVC.Models;
+using System.Web.Security;
 
 namespace OneOff.Web.MVC.Controllers
 {
@@ -73,10 +74,11 @@ namespace OneOff.Web.MVC.Controllers
                 return View(model);
             }
 
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
+                    
                     if (User.IsInRole("Artist"))
                     {
                         return RedirectToAction("Index", "Artist");
@@ -157,7 +159,7 @@ namespace OneOff.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, IsArtist = model.IsArtist };
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, IsArtist = model.IsArtist };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
