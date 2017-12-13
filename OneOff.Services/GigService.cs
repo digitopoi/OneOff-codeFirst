@@ -33,11 +33,11 @@ namespace OneOff.Services
 
             if (isArtist)
             {
-                entity.IsRequest = true;
+                entity.IsRequest = false;
             }
             else
             {
-                entity.IsRequest = false;
+                entity.IsRequest = true;
             }
 
             using (var context = new ApplicationDbContext())

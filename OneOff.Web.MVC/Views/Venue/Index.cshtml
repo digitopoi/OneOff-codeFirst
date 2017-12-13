@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OneOff.Data.Entities.Gig>
+﻿@model IEnumerable<OneOff.Models.ViewModels.GigEditViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.OwnerId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
@@ -25,9 +22,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OwnerId)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Date)
         </td>

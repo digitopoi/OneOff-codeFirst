@@ -9,121 +9,115 @@ using System.Web;
 using System.Web.Mvc;
 using OneOff.Data.Entities;
 using OneOff.Web.MVC.Models;
+using Microsoft.AspNet.Identity;
+using OneOff.Services;
+using OneOff.Models.ViewModels;
 
 namespace OneOff.Web.MVC.Controllers
 {
     public class VenueController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Venue
-        public async Task<ActionResult> Index()
+        // GET: Artist
+        public ActionResult Index()
         {
-            return View(await db.Gigs.ToListAsync());
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new GigService(userId);
+            var model = service.GetGigsByUser();
+            return View(model);
         }
 
-        // GET: Venue/Details/5
-        public async Task<ActionResult> Details(int? id)
+        // GET: Artist/Details/5
+        public async Task<ActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gig gig = await db.Gigs.FindAsync(id);
-            if (gig == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gig);
+            var service = CreateGigService();
+            var model = await service.GetGigByIdAsync(id);
+
+            return View(model);
         }
 
-        // GET: Venue/Create
+        // GET: Artist/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Venue/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Artist/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "GigId,OwnerId,Date,PostalCode")] Gig gig)
+        public async Task<ActionResult> Create(GigViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Gigs.Add(gig);
-                await db.SaveChangesAsync();
+                return View(model);
+            }
+
+            var service = CreateGigService();
+
+            if (await service.CreateGigAsync(model, false))
+            {
+                TempData["SaveResult"] = "Your gig was created.";
                 return RedirectToAction("Index");
             }
 
-            return View(gig);
+            ModelState.AddModelError("", "Gig could not be created.");
+            return View(model);
         }
 
-        // GET: Venue/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+        // GET: Artist/Edit/5
+        public async Task<ActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gig gig = await db.Gigs.FindAsync(id);
-            if (gig == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gig);
+            var service = CreateGigService();
+            var model = await service.GetGigByIdAsync(id);
+
+            return View(model);
         }
 
-        // POST: Venue/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Artist/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "GigId,OwnerId,Date,PostalCode")] Gig gig)
+        public async Task<ActionResult> Edit(int id, GigEditViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            var service = CreateGigService();
+
+            if (await service.UpdateGigAsync(id, model))
             {
-                db.Entry(gig).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                TempData["SaveResult"] = "Your gig was updated";
                 return RedirectToAction("Index");
             }
-            return View(gig);
+
+            ModelState.AddModelError("", "Your gig could not be updated.");
+            return View(model);
         }
 
-        // GET: Venue/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        // GET: Artist/Delete/5
+        public async Task<ActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gig gig = await db.Gigs.FindAsync(id);
-            if (gig == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gig);
+            var service = CreateGigService();
+            var model = await service.GetGigByIdAsync(id);
+
+            return View(model);
         }
 
-        // POST: Venue/Delete/5
+        // POST: Artist/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Gig gig = await db.Gigs.FindAsync(id);
-            db.Gigs.Remove(gig);
-            await db.SaveChangesAsync();
+            var service = CreateGigService();
+            await service.DeleteGigAsync(id);
+
+            TempData["SaveResult"] = "Your gig was cancelled";
+
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+        private GigService CreateGigService()
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new GigService(userId);
+            return service;
         }
     }
 }

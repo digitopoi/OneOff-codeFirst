@@ -73,12 +73,18 @@ namespace OneOff.Web.MVC.Controllers
                 return View(model);
             }
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
+                    if (User.IsInRole("Artist"))
+                    {
+                        return RedirectToAction("Index", "Artist");
+                    }
+                    else if (User.IsInRole("Venue"))
+                    {
+                        return RedirectToAction("Index", "Venue");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
