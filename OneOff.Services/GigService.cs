@@ -1,8 +1,8 @@
 ﻿using OneOff.Contracts;
+using OneOff.Data;
 using OneOff.Data.Entities;
 using OneOff.Models;
 using OneOff.Models.ViewModels;
-using OneOff.Web.MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

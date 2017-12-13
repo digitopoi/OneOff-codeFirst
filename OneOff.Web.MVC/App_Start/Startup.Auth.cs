@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using OneOff.Web.MVC.Models;
+using OneOff.Data;
 
 namespace OneOff.Web.MVC
 {

@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using OneOff.Web.MVC.Models;
+using OneOff.Data;
 
 namespace OneOff.Web.MVC
 {

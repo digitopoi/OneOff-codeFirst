@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin;
-using OneOff.Web.MVC.Models;
+using OneOff.Data;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(OneOff.Web.MVC.Startup))]

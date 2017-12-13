@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using OneOff.Web.MVC.Models;
 using System.Web.Security;
+using OneOff.Data;
 
 namespace OneOff.Web.MVC.Controllers
 {
