@@ -329,9 +329,18 @@ namespace OneOff.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = new ApplicationUser() { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser() { UserName = model.UserName, Email = model.Email, IsArtist = model.IsArtist };
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+
+            if (model.IsArtist)
+            {
+                UserManager.AddToRole(user.Id, "Artist");
+            }
+            else
+            {
+                UserManager.AddToRole(user.Id, "Venue");
+            }
 
             if (!result.Succeeded)
             {
