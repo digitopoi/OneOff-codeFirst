@@ -16,7 +16,7 @@ import {
         MatIconModule,
         MatCardModule
     ],
-    exports [
+    exports: [
         MatButtonModule,
         MatMenuModule,
         MatToolbarModule,
