@@ -11,7 +11,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes = [
-  { path: 'register', component: RegistrationComponent }
+  { path: 'register', component: RegistrationComponent },
+  { path: '**', component: RegistrationComponent }
 ];
 
 @NgModule({
